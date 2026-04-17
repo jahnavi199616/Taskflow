@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskflow</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    nav a { margin-right: 12px; }
+    .card { border: 1px solid #ddd; padding: 16px; border-radius: 12px; margin: 12px 0; }
+    input { padding: 10px; width: 100%; box-sizing: border-box; margin: 8px 0; }
+    button { padding: 10px 14px; }
+    .flash { background: #f6f7f8; padding: 10px; border-radius: 8px; margin-bottom: 12px; }
+    ul { list-style: none; padding: 0; }
+    li { display:flex; justify-content:space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; }
+    .muted { color: #666; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    {% if session.get('user_id') %}
+      <span class="muted">Logged in as {{ session.get('username') }}</span>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+  </nav>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</body>
+</html>
