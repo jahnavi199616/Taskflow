@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+  <h1>Taskflow</h1>
+  {% if session.get('user_id') %}
+    <form method="post" action="{{ url_for('add_todo') }}">
+      <input name="title" placeholder="New todo" required>
+      <button type="submit">Add todo</button>
+    </form>
+    <ul>
+      {% for todo in todos %}
+        <li>
+          <span>{% if todo['done'] %}<s>{{ todo['title'] }}</s>{% else %}{{ todo['title'] }}{% endif %}</span>
+          <span>
+            {% if not todo['done'] %}<a href="{{ url_for('complete_todo', todo_id=todo['id']) }}">Complete</a>{% endif %}
+            <a href="{{ url_for('delete_todo', todo_id=todo['id']) }}">Delete</a>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Please log in or create an account to manage your todos.</p>
+  {% endif %}
+</div>
+{% endblock %}
