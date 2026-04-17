@@ -1,19 +1,37 @@
-# Taskflow
+# TaskFlow Project
 
-A Flask todo app with user login and SQLite.
+## 📌 Features
+- User registration and login
+- Add, complete, and delete tasks
+- Session-based authentication
+- SQLite database
 
-## Features
-- Register and log in
-- Add, complete, and delete todos
-- SQLite storage
-- Session-based auth
+## 🛠 Tech Stack
+- Python (Flask)
+- HTML, CSS
+- SQLite
 
-## Run
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-export SECRET_KEY='change-me'
-flask --app app init-db
-flask --app app run
-```
+## 🚀 How to Run
+
+1. Create virtual environment:
+   python -m venv venv
+
+2. Activate:
+   Windows:
+   venv\Scripts\activate
+
+3. Install dependencies:
+   pip install -r requirements.txt
+
+4. Run the app:
+   flask --app app run
+
+5. Open browser:
+   http://localhost:5000
+
+## 📖 About
+This is a Task Management web application built using Flask.
+I customized and structured this project for learning and development purposes.
+
+## 👩‍💻 Author
+Jahnavi
